@@ -1,0 +1,52 @@
+.form_login{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.header_login {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.header_login img {
+    width: 100px;
+    margin-bottom: 15px
+}
+.header_login h1 {
+  color: #333;
+  margin-bottom: -18px
+}
+
+.nomeLogin {
+    border: 3px solid #333;
+    border-radius:7px;
+    color: #333;
+    font-size: 1em;
+    margin-bottom: 15px;
+    max-width: 300px;
+    width: 100%;
+    padding: 5px;
+}
+
+.botaoLogin{
+    background-color:#FA8072;
+    border-radius: 7px;
+    color: aliceblue;
+    cursor: grab;
+    font-size: 1em;
+    max-width: 300px;
+    width: 100%;
+    padding: 5px;
+
+}
+.botaoLogin:disabled{
+    background-color: #c0c0c0;
+    color: azure;
+    cursor: not-allowed;
+}
