@@ -36,6 +36,7 @@ backface-visibility: hidden;
 
 }
 
-.card:hover {
+.revela-carta {
     transform: rotateY(180deg);
 }
+
