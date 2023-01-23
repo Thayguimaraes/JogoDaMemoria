@@ -25,17 +25,35 @@ const personagens = [
 let primeiraCarta = '';
 let segundaCarta = '';
 
+const checaFimGame = () => {
+    const disabilitaCarta = document.querySelectorAll('desabilita-carta');
+
+    if(disabilitaCarta.length == 20){
+        alert("parabens");
+    }
+}
+
 const compararCartar = () => {
     const primeiroPersonagem = primeiraCarta.getAttribute('data-personagem');
     const seundoPersonagem = segundaCarta.getAttribute('data-personagem');
 
     if(primeiroPersonagem == seundoPersonagem){
+        primeiraCarta.firstChild.classList.add('desabilita-carta');
+        segundaCarta.firstChild.classList.add('desabilita-carta');
 
+        primeiraCarta = '';
+        segundaCarta = '';
+
+        checaFimGame()
         
     }else {
         setTimeout(() => {
             primeiraCarta.classList.remove('revela-carta');
             segundaCarta.classList.remove('revela-carta');
+
+             primeiraCarta = '';
+             segundaCarta = '';
+
         }, 500);
        
     }
@@ -46,7 +64,7 @@ const revelaCarta = ({target}) => {
 
     if(target.parentNode.className.includes('revela-carta'))
     {
-        return
+        return;
     }
 
     if(primeiraCarta == ''){
@@ -55,8 +73,9 @@ const revelaCarta = ({target}) => {
     } else if(segundaCarta == ''){
         target.parentNode.classList.add('revela-carta'); 
         segundaCarta = target.parentNode;
-    }
+    } 
     
+    compararCartar();
 
 }
 
