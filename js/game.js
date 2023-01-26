@@ -1,4 +1,6 @@
 const grid = document.querySelector('.grid');
+const spanJogador = document.querySelector('.jogador')
+const tempo = document.querySelector('.tempo')
 const personagens = [
     'img1',
     'img2',
@@ -25,10 +27,12 @@ const personagens = [
 let primeiraCarta = '';
 let segundaCarta = '';
 
-const checaFimGame = () => {
+const checaFimJogo = () => {
     const disabilitaCarta = document.querySelectorAll('desabilita-carta');
 
     if(disabilitaCarta.length == 20){
+        clearInterval(this.paraCronometro);
+        alert(`Parabens, ${spanJogador.innerHTML}! seu tempo foi: ${tempo.innerHTML}`);
         alert("parabens");
     }
 }
@@ -44,7 +48,7 @@ const compararCartar = () => {
         primeiraCarta = '';
         segundaCarta = '';
 
-        checaFimGame()
+        checaFimJogo()
         
     }else {
         setTimeout(() => {
@@ -79,7 +83,7 @@ const revelaCarta = ({target}) => {
 
 }
 
-const createCard = (personagem) => {
+const criaCarta = (personagem) => {
     const card = document.createElement('div');
     const front = document.createElement('div');
     const back = document.createElement('div');
@@ -102,12 +106,29 @@ const createCard = (personagem) => {
 const carregarJogo = () => {
     const embaralharCartas= personagens.sort(() => Math.random() - 0.5);
     embaralharCartas.forEach((personagem) => {
-        const card = createCard(personagem);
+        const card = criaCarta(personagem);
         grid.appendChild(card)
     })
 }
 
 
-carregarJogo();
+const cronometro = () =>{
+    this.paraCronometro = setInterval(() =>{
+        const tempoAtual = +tempo.innerHTML;
+        tempo.innerHTML = tempoAtual + 1;
+    }, 1000);
+}
+
+window.onload = () =>{
+
+    const nomeJogador = localStorage.getItem('jogador');
+
+    spanJogador.innerHTML = nomeJogador
+
+    cronometro();
+    carregarJogo();
+}
+
+
 
 
